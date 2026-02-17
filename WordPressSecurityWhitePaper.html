@@ -359,24 +359,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </ul>
 
 <p>Proactive measures are also taken to harden the software to protect against misuse. For example, the function <code>the_search_query()</code> is often misused by theme authors who do not escape the function's output for use in HTML. The function's output was proactively changed in WordPress 2.3 to be pre-escaped for security.</p>
-<h4>A4 - Insecure Direct Object Reference</h4>
-<p>WordPress often provides direct object reference, such as unique numeric identifiers of user accounts or content available in the URL or form fields. While these identifiers disclose direct system information, WordPress' rich permissions and access control system prevent unauthorized requests.</p>
-<h4>A5 - Security Misconfiguration</h4>
-<p>The majority of the WordPress security configuration operations are limited to a single authorized administrator. Default settings for WordPress are continually evaluated at the core team level, and the WordPress core team provides documentation and best practices to tighten security for server configuration for running a WordPress site<sup id="ref11"><a href="#footnote11">11</a></sup>.</p>
-<h4>A6 - Sensitive Data Exposure</h4>
-<p>WordPress user account passwords are salted and hashed using bcrypt<sup id="ref12"><a href="#footnote12">12</a></sup>, the industry standard approach for secure password hashing. Bcrypt includes a built-in cost factor that makes it computationally unfeasible for attackers to crack passwords through brute force attacks.</p>
-<p>To address bcrypt's 72-byte password length limitation, WordPress implements SHA-384 pre-hashing. Application passwords, password reset keys, and other security tokens use the BLAKE2b<sup id="ref50"><a href="#footnote50">50</a></sup> algorithm via Sodium for enhanced cryptographic security.</p>
-<p>WordPress' permission system is used to control access to private information such as registered users' PII, commenters' email addresses, privately published content, etc. A password strength meter is included in the core software providing additional information to users setting their passwords and hints on increasing strength. WordPress also has an optional configuration setting for enforcing HTTPS access for the administration area.</p>
-<h4>A7 - Missing Function Level Access Control</h4>
-<p>WordPress checks for proper authorization and permissions for any function level access requests prior to the action being executed. Access or visualization of administrative URLs, menus, and pages without proper authentication is tightly integrated with the authentication system to prevent access from unauthorized users.</p>
-<h4>A8 - Cross Site Request Forgery (CSRF)</h4>
-<p>WordPress uses cryptographic tokens, called nonces<sup id="ref13"><a href="#footnote13">13</a></sup>, to validate intent of action requests from authorized users to protect against potential CSRF threats. WordPress provides an API for the generation of these tokens to create and verify unique and temporary tokens, and the token is limited to a specific user, a specific action, a specific object, and a specific time period, which can be added to forms and URLs as needed. Additionally, all nonces are invalidated upon logout.</p>
-<h4>A9 - Using Components with Known Vulnerabilities</h4>
-<p>The WordPress core team closely monitors the few included libraries and frameworks WordPress integrates with for core functionality. In the past the core team has made contributions to several third-party components to make them more secure, such as the update to fix a cross-site vulnerability in TinyMCE in WordPress 3.5.2<sup id="ref14"><a href="#footnote14">14</a></sup>.</p>
-
-<p>If necessary, the core team may decide to fork or replace critical external components, such as when the SWFUpload library was officially replaced by the Plupload library in 3.5.2, and a secure fork of SWFUpload was made available by the security team<sup id="ref15"><a href="#footnote15">15</a></sup> for those plugins who continued to use SWFUpload in the short-term.</p>
-<h4>A10 - Unvalidated Redirects and Forwards</h4>
-<p>WordPress' internal access control and authentication system will protect against attempts to direct users to unwanted destinations or automatic redirects. This functionality is also made available to plugin developers via an API, <code>wp_safe_redirect()</code><sup id="ref16"><a href="#footnote16">16</a></sup>.</p>
 
 <h3>REST API Security</h3>
 
